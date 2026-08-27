@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Психолог, подход IFS. Работа с внутренним конфликтом, самокритикой и тревогой. Онлайн, на русском и английском.">
+<meta property="og:title" content="Екатерина Лабутова · психолог, IFS-терапевт">
+<meta property="og:description" content="Работаю с внутренним конфликтом, самокритикой, тревогой и травмой. Онлайн, на русском и английском.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230E1A1D%22/><text x=%2250%22 y=%2268%22 font-size=%2252%22 text-anchor=%22middle%22 fill=%22%23EDDFC7%22 font-family=%22Georgia,serif%22>Е</text></svg>">
+<title>Екатерина Лабутова</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@300;400&display=swap">
+
+<style>
+  /* ── Единая тёмная тема. Все цвета заданы явно, страница не зависит
+       от светлой/тёмной темы устройства. ─────────────────────────── */
+  :root{
+    --ground:      #0E1A1D;
+    --ground-2:    #142428;
+    --ground-3:    #182C30;
+    --line:        #20353A;
+    --line-soft:   #1A2C30;
+
+    --text:        #E3EBE6;
+    --muted:       #94A8A5;
+    --faint:       #6E8382;
+
+    --warm:        #EDDFC7;
+    --accent:      #8CB39B;
+    --accent-dim:  #5F8873;
+    --caution:     #D6ABA2;
+
+    --measure: 62ch;
+    --rail: 190px;
+
+    --step--1: 0.813rem;
+    --step-0:  1.0rem;
+    --step-1:  1.1875rem;
+    --step-2:  clamp(1.45rem, 1.2rem + 1.1vw, 1.9rem);
+    --step-3:  clamp(1.9rem, 1.4rem + 2.2vw, 2.9rem);
+    --step-4:  clamp(2.6rem, 1.6rem + 4.4vw, 4.6rem);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--text);
+    font-family:"Golos Text","Helvetica Neue",Arial,sans-serif;
+    font-size:var(--step-0);
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  ::selection{ background:var(--accent-dim); color:#0B1518; }
+
+  a{ color:inherit; }
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  /* ── Каркас ──────────────────────────────────────────────────── */
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding-inline:clamp(20px,5vw,56px);
+  }
+
+  .section{
+    border-top:1px solid var(--line-soft);
+    padding-block:clamp(56px,8vw,104px);
+  }
+  .section:first-of-type{ border-top:0; }
+
+  /* Слева липкий ярлык раздела, справа содержимое. */
+  .section > .wrap{
+    display:grid;
+    gap:clamp(20px,3vw,40px);
+  }
+  @media (min-width:960px){
+    .section > .wrap{
+      grid-template-columns:var(--rail) minmax(0,1fr);
+      gap:56px;
+    }
+    .rail{
+      position:sticky;
+      top:44px;
+      align-self:start;
+    }
+  }
+
+  .rail{
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:0.688rem;
+    font-weight:400;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    padding-top:0.55rem;
+  }
+  .rail::before{
+    content:"";
+    display:block;
+    width:26px;
+    height:1px;
+    background:var(--accent-dim);
+    margin-bottom:0.9rem;
+  }
+
+  .body{ display:flex; flex-direction:column; gap:clamp(20px,3vw,32px); }
+
+  /* ── Типографика ─────────────────────────────────────────────── */
+  h1,h2,h3{
+    font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    color:var(--warm);
+    font-weight:300;
+    line-height:1.1;
+    text-wrap:balance;
+    margin:0;
+    letter-spacing:-0.005em;
+  }
+  h1{ font-size:var(--step-4); }
+  h2{ font-size:var(--step-3); }
+  h3{
+    font-size:var(--step-1);
+    font-family:"Golos Text","Helvetica Neue",Arial,sans-serif;
+    font-weight:600;
+    color:var(--text);
+    line-height:1.35;
+    letter-spacing:0;
+  }
+
+  p{ margin:0; max-width:var(--measure); }
+  .lead{
+    font-size:var(--step-1);
+    line-height:1.6;
+    color:var(--text);
+  }
+  .muted{ color:var(--muted); }
+  .small{ font-size:var(--step--1); line-height:1.6; }
+
+  /* Акцентная строка про языки консультаций */
+  .lang{
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-style:italic;
+    font-size:var(--step-2);
+    color:var(--warm);
+    line-height:1.35;
+    max-width:var(--measure);
+  }
+
+  em{ font-style:italic; }
+
+  /* Подставляемые значения: заметно, чтобы не забыть заменить. */
+  .fill{
+    color:var(--accent);
+    border-bottom:1px dashed var(--accent-dim);
+    font-style:normal;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+
+  /* ── Шапка ───────────────────────────────────────────────────── */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding-block:22px;
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .topbar a{ text-decoration:none; }
+  .topbar a:hover{ color:var(--accent); }
+  .brand{ color:var(--text); }
+
+  /* ── Первый экран ────────────────────────────────────────────── */
+  .hero{ padding-block:clamp(40px,7vw,88px) clamp(56px,8vw,104px); }
+  .hero > .wrap{
+    display:grid;
+    gap:clamp(32px,5vw,64px);
+    align-items:center;
+  }
+  @media (min-width:860px){
+    .hero > .wrap{ grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr); }
+  }
+
+  .eyebrow{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 1.4rem;
+  }
+
+  .hero-copy{ display:flex; flex-direction:column; gap:1.6rem; }
+  .hero h1{ margin-bottom:-0.2rem; }
+  .role{
+    font-family:"Cormorant Garamond",Georgia,serif;
+    font-style:italic;
+    font-size:var(--step-2);
+    color:var(--muted);
+    line-height:1.3;
+    margin-top:0.4rem;
+  }
+
+  /* Портреты. Снимки уже в чёрно-белой обработке, CSS-фильтр не нужен. */
+  .portrait{
+    margin:0;
+    aspect-ratio:4/5;
+    background:var(--ground-2);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .portrait img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    /* Кадр обрезается сверху и снизу. 30% сдвигает видимую часть вверх,
+       чтобы лицо не уходило в середину. Меньше число = выше кроп. */
+    object-position:50% 30%;
+  }
+
+  .about-intro{
+    display:grid;
+    gap:clamp(20px,3vw,36px);
+    align-items:start;
+  }
+  @media (min-width:720px){
+    .about-intro{ grid-template-columns:minmax(0,1fr) 300px; }
+  }
+  .about-text{ display:flex; flex-direction:column; gap:1rem; }
+  .about-text p{ margin:0; }
+
+  .portrait-sm{
+    margin:0;
+    aspect-ratio:3/4;
+    background:var(--ground-2);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .portrait-sm img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  /* ── Кнопки ──────────────────────────────────────────────────── */
+  .actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6em;
+    padding:0.95em 1.7em;
+    background:var(--accent);
+    color:#0C1719;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.938rem;
+    border:1px solid var(--accent);
+    transition:background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  }
+  .btn:hover{ background:var(--warm); border-color:var(--warm); }
+  .btn:active{ transform:translateY(1px); }
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--text);
+    border-color:var(--line);
+    font-weight:500;
+  }
+  .btn-ghost:hover{ background:transparent; border-color:var(--accent); color:var(--accent); }
+
+  /* ── Списки запросов ─────────────────────────────────────────── */
+  .topics{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:0;
+    max-width:var(--measure);
+  }
+  .topics li{
+    border-bottom:1px solid var(--line-soft);
+    padding:0.95rem 0;
+    display:grid;
+    grid-template-columns:1.2rem 1fr;
+    gap:0.6rem;
+    align-items:baseline;
+  }
+  .topics li:first-child{ border-top:1px solid var(--line-soft); }
+  .topics li::before{
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--accent-dim);
+    transform:translateY(-2px);
+  }
+
+  /* ── Блок «куда не возьму» ───────────────────────────────────── */
+  .note{
+    border:1px solid var(--line);
+    border-left:2px solid var(--caution);
+    background:var(--ground-2);
+    padding:clamp(20px,3vw,28px);
+    max-width:var(--measure);
+    display:flex;
+    flex-direction:column;
+    gap:0.85rem;
+  }
+  .note h3{ color:var(--caution); }
+  .note ul{ margin:0; padding-left:1.15rem; color:var(--muted); }
+  .note li{ margin-block:0.3rem; }
+
+  /* ── Реестр: год | факт ──────────────────────────────────────── */
+  .ledger{ display:flex; flex-direction:column; gap:2.2rem; }
+
+  .ledger-group h3{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    font-weight:400;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:0.9rem;
+  }
+
+  .ledger dl{
+    margin:0;
+    display:grid;
+    gap:0;
+    max-width:640px;
+  }
+  .ledger .row{
+    display:grid;
+    grid-template-columns:6.5rem minmax(0,1fr);
+    gap:0.4rem 1.4rem;
+    padding:0.85rem 0;
+    border-top:1px solid var(--line-soft);
+    align-items:baseline;
+  }
+  .ledger .row:last-child{ border-bottom:1px solid var(--line-soft); }
+  .ledger dt{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.813rem;
+    font-weight:300;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    letter-spacing:0.02em;
+  }
+  .ledger dd{ margin:0; }
+  .ledger dd .sub{
+    display:block;
+    color:var(--muted);
+    font-size:var(--step--1);
+    line-height:1.55;
+    margin-top:0.2rem;
+  }
+  @media (max-width:520px){
+    .ledger .row{ grid-template-columns:1fr; gap:0.15rem; }
+  }
+
+  /* ── Прайс ───────────────────────────────────────────────────── */
+  .price{
+    display:flex;
+    flex-direction:column;
+    max-width:var(--measure);
+  }
+  .price-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:0.4rem 1.5rem;
+    align-items:baseline;
+    padding:1.15rem 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .price-row:last-child{ border-bottom:1px solid var(--line-soft); }
+  .price-row .what{ font-weight:500; }
+  .price-row .what .sub{
+    display:block;
+    font-weight:400;
+    color:var(--muted);
+    font-size:var(--step--1);
+    margin-top:0.2rem;
+  }
+  .price-row .amount{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-variant-numeric:tabular-nums;
+    color:var(--warm);
+    font-size:1.0rem;
+    white-space:nowrap;
+  }
+
+  /* ── Шаги: здесь порядок действительно важен ─────────────────── */
+  .steps{
+    list-style:none;
+    counter-reset:step;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:1.6rem;
+    max-width:var(--measure);
+  }
+  .steps li{
+    counter-increment:step;
+    display:grid;
+    grid-template-columns:2.6rem minmax(0,1fr);
+    gap:1rem;
+    align-items:start;
+  }
+  .steps li::before{
+    content:counter(step,decimal-leading-zero);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.75rem;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+    padding-top:0.35rem;
+    letter-spacing:0.06em;
+  }
+  .steps strong{ font-weight:600; display:block; margin-bottom:0.2rem; }
+
+
+  /* ── Контакты ────────────────────────────────────────────────── */
+  .contacts{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    max-width:var(--measure);
+  }
+  .contacts li{
+    display:grid;
+    grid-template-columns:6.5rem minmax(0,1fr);
+    gap:0.3rem 1.4rem;
+    padding:0.8rem 0;
+    border-top:1px solid var(--line-soft);
+    align-items:baseline;
+  }
+  .contacts li:last-child{ border-bottom:1px solid var(--line-soft); }
+  .contacts .label{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+  }
+  .contacts a{ color:var(--text); text-decoration:none; border-bottom:1px solid var(--line); }
+  .contacts a:hover{ color:var(--accent); border-color:var(--accent-dim); }
+  @media (max-width:520px){
+    .contacts li{ grid-template-columns:1fr; }
+  }
+
+  /* ── Подвал ──────────────────────────────────────────────────── */
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding-block:36px 48px;
+    color:var(--faint);
+    font-size:var(--step--1);
+    line-height:1.7;
+  }
+  footer .wrap{ display:flex; flex-direction:column; gap:0.7rem; }
+  footer p{ max-width:70ch; }
+
+  /* ── Раскрывающиеся блоки подходов ───────────────────────────── */
+  .acc{
+    border:1px solid var(--line);
+    background:var(--ground-2);
+    max-width:var(--measure);
+  }
+  .acc summary{
+    display:flex;
+    align-items:baseline;
+    gap:0.5rem 1rem;
+    flex-wrap:wrap;
+    padding:1.05rem 1.25rem;
+    cursor:pointer;
+    list-style:none;
+  }
+  .acc summary::-webkit-details-marker{ display:none; }
+  .acc-title{ font-weight:600; }
+  .acc-note{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--faint);
+  }
+  .acc summary::after{
+    content:"+";
+    margin-left:auto;
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    color:var(--accent);
+    font-size:1rem;
+    line-height:1;
+  }
+  .acc[open] summary::after{ content:"\2212"; }
+  .acc summary:hover .acc-title{ color:var(--accent); }
+  .acc-content{
+    padding:0.2rem 1.25rem 1.3rem;
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+
+  /* ── Документы и просмотр ────────────────────────────────────── */
+  .docs{ display:flex; flex-wrap:wrap; gap:16px; }
+  .doc{
+    display:block;
+    width:min(380px,100%);
+    padding:14px 14px 0;
+    margin:0;
+    border:1px solid var(--line);
+    background:var(--ground-2);
+    color:inherit;
+    font:inherit;
+    text-align:left;
+    cursor:zoom-in;
+    transition:border-color 160ms ease;
+  }
+  .doc:hover{ border-color:var(--accent-dim); }
+  .doc img{
+    display:block;
+    width:100%;
+    height:auto;
+    border:1px solid var(--line);
+  }
+  .doc span{
+    display:block;
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--faint);
+    line-height:1.7;
+    padding:0.75rem 0.1rem 0.85rem;
+  }
+
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    display:none;
+    place-items:center;
+    padding:4vmin;
+    background:rgba(8,14,16,0.92);
+    cursor:zoom-out;
+  }
+  .lightbox.open{ display:grid; }
+  .lightbox img{ max-width:100%; max-height:100%; box-shadow:0 8px 40px rgba(0,0,0,0.5); }
+
+  /* ── Появление первого экрана ────────────────────────────────── */
+  @media (prefers-reduced-motion:no-preference){
+    .rise{
+      opacity:0;
+      transform:translateY(14px);
+      animation:rise 900ms cubic-bezier(.2,.7,.3,1) forwards;
+    }
+    .rise:nth-child(1){ animation-delay:60ms; }
+    .rise:nth-child(2){ animation-delay:200ms; }
+  }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <span class="brand">Екатерина Лабутова</span>
+    <a href="#contacts">Записаться</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Первый экран ─────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap">
+      <figure class="portrait rise">
+        <img src="photo-hero.jpg?v=3" alt="Екатерина Лабутова" width="1000" height="1333">
+      </figure>
+
+      <div class="hero-copy rise">
+        <div>
+          <p class="eyebrow">Психолог · IFS-терапевт · ACT · онлайн</p>
+          <h1>Екатерина Лабутова</h1>
+          <p class="role">Работаю с внутренним конфликтом,<br>самокритикой, тревогой и травмой</p>
+        </div>
+
+        <p class="lead muted">Если внутри вас две части тянут в разные стороны, мы не будем
+          выбирать, какая из них права. Мы выслушаем каждую и дадим ей место.</p>
+
+        <div class="actions">
+          <a class="btn" href="#contacts">Записаться</a>
+          <a class="btn btn-ghost" href="#method">Как я работаю</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Запросы ──────────────────────────────────────────────── -->
+  <section class="section" id="topics">
+    <div class="wrap">
+      <p class="rail">Запросы</p>
+      <div class="body">
+        <h2>С чем ко мне приходят</h2>
+        <ul class="topics">
+          <li><span>Внутренний критик и перфекционизм: сколько ни сделай, всё «недостаточно»</span></li>
+          <li><span>Тревога, бесконечное прокручивание мыслей, паралич перед решением</span></li>
+          <li><span>Выгорание и ощущение, что работа заняла всё место в жизни</span></li>
+          <li><span>Эмиграция: адаптация в новой стране, потеря привычных опор,
+            одиночество и тоска по дому</span></li>
+          <li><span>Прокрастинация и саботаж в том, что для вас по-настоящему важно</span></li>
+          <li><span>Последствия травматического опыта: оцепенение, флешбэки, ощущение отделённости от себя</span></li>
+          <li><span>Кризис профессиональной идентичности, смена карьеры, вопрос «а моё ли это»</span></li>
+          <li><span>Повторяющиеся сценарии в отношениях, трудности с границами, чувство вины</span></li>
+          <li><span>Стыд и жёсткое обращение с собой после ошибок</span></li>
+        </ul>
+
+        <p class="lang">Консультирую на русском и английском</p>
+        <p class="muted small">Я сама живу в эмиграции и знаю этот опыт изнутри.
+          Если часть вашей жизни проходит на английском, сессию можно вести
+          на нём или переключаться между языками по ходу разговора.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Подход ───────────────────────────────────────────────── -->
+  <section class="section" id="method">
+    <div class="wrap">
+      <p class="rail">Подход</p>
+      <div class="body">
+        <h2>Как я работаю</h2>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-title">Клиническая психология и диагностика</span>
+            <span class="acc-note">база всей работы</span>
+          </summary>
+          <div class="acc-content">
+            <p>Клиническая психология это база, на которой строится вся моя работа:
+              я опираюсь на понимание того, как устроена психика в норме
+              и при расстройствах. Когда это нужно, я провожу патопсихологическую
+              диагностику: оцениваю, как работают внимание, память,
+              мышление и эмоциональная сфера, и вижу, где заканчивается зона
+              психологической помощи и начинается зона медицины. Если вашим состоянием
+              должен заниматься врач-психиатр или специалист другого профиля, я прямо
+              говорю об этом и помогаю сориентироваться, к кому обратиться.
+              Поэтому приходить можно с любым состоянием, не решая заранее,
+              достаточно ли оно «серьёзное» для терапии.</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-title">IFS, терапия внутренних семейных систем</span>
+            <span class="acc-note">основной подход</span>
+          </summary>
+          <div class="acc-content">
+            <p>IFS (Internal Family Systems) это интегративный метод, созданный
+              американским психотерапевтом Ричардом Шварцем в 1980-е годы.
+              Он опирается на идею естественной множественности психики: в каждом
+              из нас сосуществуют разные части, и их внутренние споры совершенно
+              нормальны. Одни части предупреждают боль заранее и потому организуют,
+              контролируют и критикуют, другие гасят её в момент кризиса, а третьи,
+              самые уязвимые, хранят давний опыт стыда, страха или горя. Даже самая
+              неудобная из них появилась когда-то, чтобы защитить нас, и до сих пор
+              делает это как умеет.</p>
+
+            <p>Кроме частей, в каждом человеке есть Self: врождённое качество
+              присутствия, которое не нужно специально развивать, оно уже есть.
+              Из этого состояния, соединяющего спокойствие, любопытство, ясность
+              и сострадание, мы знакомимся с частями: выясняем, от чего каждая
+              из них вас бережёт, и помогаем ей отпустить накопленное бремя.
+              Цель терапии: части выходят из ролей, в которых застряли,
+              а вы получаете доступ к собственной внутренней опоре. У подхода
+              серьёзная доказательная база: с 2015 года IFS включён в американский
+              реестр доказательных практик NREPP и подтвердил эффективность
+              при тревоге, депрессии, ПТСР и расстройствах пищевого поведения.</p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <span class="acc-title">ACT, терапия принятия и ответственности</span>
+            <span class="acc-note">вторая опора</span>
+          </summary>
+          <div class="acc-content">
+            <p>ACT (Acceptance and Commitment Therapy) это поведенческий метод, созданный
+              американским психологом Стивеном Хейсом в 1980-е годы. В его центре
+              психологическая гибкость: умение замечать свои мысли и чувства,
+              не вступая с ними в борьбу, и при этом продолжать движение к тому,
+              что для вас по-настоящему важно. В работе это значит, что мы проясняем
+              ваши ценности и выстраиваем шаги в их сторону, не откладывая жизнь
+              до момента, когда тревога наконец пройдёт. Эффективность ACT подтверждена
+              сотнями рандомизированных исследований при тревоге, депрессии, хронической
+              боли и обсессивно-компульсивном расстройстве.</p>
+          </div>
+        </details>
+
+        <div class="note" style="border-left-color:var(--accent-dim)">
+          <h3 style="color:var(--text)">Формат</h3>
+          <p class="small muted">Онлайн, 60 минут, раз в неделю. Регулярность важнее
+            интенсивности: еженедельные встречи в течение нескольких месяцев дают больше,
+            чем редкие длинные разговоры. Первые изменения обычно заметны
+            к пятой-восьмой встрече.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Сессии ───────────────────────────────────────────────── -->
+  <section class="section" id="sessions">
+    <div class="wrap">
+      <p class="rail">Сессии</p>
+      <div class="body">
+        <h2>Что вас ждёт на сессиях</h2>
+        <ul class="topics">
+          <li><span>Темп работы задаёте вы: я не тороплю и не давлю, потому что глубина
+            появляется там, где достаточно безопасно</span></li>
+          <li><span>Я работаю с человеком, а не с диагнозом, и если увижу, что вам нужен
+            смежный специалист, скажу об этом прямо</span></li>
+          <li><span>Говорить можно всё, в том числе о том, что не нравится в работе
+            или во мне: такие разговоры часто продвигают терапию сильнее всего</span></li>
+          <li><span>Ваши взгляды и образ жизни могут быть любыми: оценивать вас здесь
+            не будут</span></li>
+          <li><span>Конфиденциальность абсолютна: содержание сессий не обсуждается
+            ни с кем, а на супервизию случаи выносятся без имён и узнаваемых деталей</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Обо мне ──────────────────────────────────────────────── -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <p class="rail">Обо мне</p>
+      <div class="body">
+        <h2>Образование и путь</h2>
+
+        <div class="about-intro">
+          <div class="about-text muted">
+            <p>У меня за плечами: юрфак, год работы помощником юриста, а дальше больше
+              семи лет в IT, где я работала техническим менеджером проектов и продуктов.
+              Я хорошо знаю изнутри, как выглядят работа на износ, синдром самозванца,
+              горящие релизы и сокращения, тревога перед перформанс-ревью и выгорание,
+              до которого остался один спринт. Этот опыт ценен и для вас, и для меня:
+              вам не придётся погружать меня в технические детали и тратить сессии
+              на объяснение контекста, мы сразу начнём с того, что болит.</p>
+
+            <p>А в психологию меня привёл сам метод: я увидела, как именно работает IFS,
+              и в 2025 году пошла переучиваться на клинического психолога, чтобы
+              заниматься им профессионально.</p>
+          </div>
+
+          <figure class="portrait-sm">
+            <img src="photo-about.jpg?v=3" alt="Екатерина Лабутова" width="760" height="1013">
+          </figure>
+        </div>
+
+        <div class="ledger">
+
+          <div class="ledger-group">
+            <h3>Профессиональное образование</h3>
+            <dl>
+              <div class="row">
+                <dt>2026</dt>
+                <dd>Московский институт психоанализа
+                  <span class="sub">Профессиональная переподготовка «Клиническая психология», 1 500 часов. Квалификация: клинический психолог</span></dd>
+              </div>
+              <div class="row">
+                <dt>2026</dt>
+                <dd>ACT: терапия принятия и ответственности
+                  <span class="sub">52 часа, программа Никиты Чернова, Международный институт развития КПТ</span></dd>
+              </div>
+              <div class="row">
+                <dt>2026</dt>
+                <dd>IFS Russia: вводный базовый семинар по методу IFS
+                  <span class="sub">Двухдневный курс INTRO, Мария Москова и Ольга Младова</span></dd>
+              </div>
+              <div class="row">
+                <dt>2026</dt>
+                <dd>IFS Russia: углублённый тематический семинар
+                  <span class="sub">«Рождение и развитие внутренней системы: онтогенез частей
+                    и работа с детьми в IFS»</span></dd>
+              </div>
+              <div class="row">
+                <dt>2019</dt>
+                <dd>Высшее юридическое образование</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="ledger-group">
+            <h3>Личная терапия (как клиент)</h3>
+            <dl>
+              <div class="row">
+                <dt>с 2019</dt>
+                <dd>Еженедельная личная терапия</dd>
+              </div>
+              <div class="row">
+                <dt>2 года</dt>
+                <dd>Личная терапия в подходе IFS</dd>
+              </div>
+              <div class="row">
+                <dt>2 года</dt>
+                <dd>Семейная терапия в подходе IFS</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="ledger-group">
+            <h3>Супервизия</h3>
+            <dl>
+              <div class="row">
+                <dt>регулярно</dt>
+                <dd>Индивидуальная супервизия
+                  <span class="sub">Каждый случай в работе я разбираю с супервизором.</span></dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="ledger-group">
+            <h3>Документы</h3>
+            <div class="docs">
+              <button class="doc" type="button">
+                <img src="docs/diploma-mip.jpg?v=2"
+                  alt="Диплом о профессиональной переподготовке, Московский институт психоанализа, клиническая психология"
+                  width="1356" height="956" loading="lazy">
+                <span>МИП · «Клиническая психология» · 1 500 ч.</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Стоимость ────────────────────────────────────────────── -->
+  <section class="section" id="price">
+    <div class="wrap">
+      <p class="rail">Стоимость</p>
+      <div class="body">
+        <h2>Сколько это стоит</h2>
+        <div class="price">
+          <div class="price-row">
+            <span class="what">Индивидуальная сессия
+              <span class="sub">60 минут, онлайн</span></span>
+            <span class="amount">50&nbsp;€ · 5&nbsp;000&nbsp;₽</span>
+          </div>
+        </div>
+        <p class="muted small">Оплата в евро на Revolut или в рублях.
+          Отмена без оплаты возможна не позднее чем за 24 часа до сессии.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Запись и контакты ────────────────────────────────────── -->
+  <section class="section" id="contacts">
+    <div class="wrap">
+      <p class="rail">Запись</p>
+      <div class="body">
+        <h2>Как записаться</h2>
+        <p>Напишите мне в Telegram пару предложений о том, с чем хотите поработать,
+          и мы договоримся о времени.</p>
+
+        <ul class="contacts">
+          <li><span class="label">Telegram</span>
+            <span><a href="https://t.me/katelabu">@katelabu</a></span></li>
+          <li><span class="label">Часовой пояс</span>
+            <span>Португалия · UTC+0/+1</span></li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn" href="https://t.me/katelabu">Написать в Telegram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Информация на сайте носит справочный характер и не образует публичной оферты.
+      Психологическое консультирование не заменяет медицинскую помощь и не лечит
+      психические расстройства.</p>
+    <p>Если вам прямо сейчас тяжело и есть мысли о том, чтобы причинить себе вред,
+      пожалуйста, обратитесь в неотложную помощь или на круглосуточную линию
+      психологической поддержки: в России 8-800-333-44-34,
+      в Португалии 808 24 24 24 (SNS 24).</p>
+    <p>Ekaterina Labutova · trabalhadora independente (Португалия) · NIF 319642046 ·
+      <a href="mailto:ekaterina.labutova@gmail.com">ekaterina.labutova@gmail.com</a></p>
+    <p>Электронная книга жалоб:
+      <a href="https://www.livroreclamacoes.pt/">livroreclamacoes.pt</a></p>
+    <p>Альтернативное разрешение потребительских споров (RAL) для потребителей
+      из ЕС: CNIACC, <a href="https://www.cniacc.pt/">cniacc.pt</a></p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр документа">
+  <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+</div>
+
+<script>
+  (function(){
+    var lb = document.getElementById('lightbox');
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('.doc').forEach(function(d){
+      d.addEventListener('click', function(){
+        var im = d.querySelector('img');
+        lbImg.src = im.src;
+        lbImg.alt = im.alt;
+        lb.classList.add('open');
+      });
+    });
+    function close(){ lb.classList.remove('open'); }
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
+</script>
+</body>
+</html>
