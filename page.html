@@ -183,7 +183,7 @@
   .hero > .wrap{
     display:grid;
     gap:clamp(32px,5vw,64px);
-    align-items:center;
+    align-items:stretch;
   }
   @media (min-width:860px){
     .hero > .wrap{ grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr); }
@@ -198,7 +198,14 @@
     margin:0 0 1.4rem;
   }
 
-  .hero-copy{ display:flex; flex-direction:column; gap:1.6rem; }
+  .hero-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:1.6rem;
+  }
+  /* Кнопки прижаты к нижней линии портрета */
+  .hero-copy .actions{ margin-top:auto; }
   .hero h1{ margin-bottom:-0.2rem; }
   .role{
     font-family:"Cormorant Garamond",Georgia,serif;
@@ -237,6 +244,12 @@
   }
   .about-text{ display:flex; flex-direction:column; gap:1rem; }
   .about-text p{ margin:0; }
+  .about-text a{
+    color:inherit;
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+  .about-text a:hover{ color:var(--accent); border-color:var(--accent-dim); }
 
   .portrait-sm{
     margin:0;
@@ -358,6 +371,12 @@
     letter-spacing:0.02em;
   }
   .ledger dd{ margin:0; }
+  .ledger dd a{
+    color:inherit;
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+  .ledger dd a:hover{ color:var(--accent); border-color:var(--accent-dim); }
   .ledger dd .sub{
     display:block;
     color:var(--muted);
@@ -465,13 +484,44 @@
   /* ── Подвал ──────────────────────────────────────────────────── */
   footer{
     border-top:1px solid var(--line-soft);
-    padding-block:36px 48px;
-    color:var(--faint);
+    padding-block:44px 52px;
+    color:var(--muted);
     font-size:var(--step--1);
     line-height:1.7;
   }
-  footer .wrap{ display:flex; flex-direction:column; gap:0.7rem; }
-  footer p{ max-width:70ch; }
+  footer .wrap{ display:flex; flex-direction:column; gap:2rem; }
+  .foot-cols{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:32px;
+  }
+  @media (max-width:720px){
+    .foot-cols{ grid-template-columns:1fr; }
+  }
+  .foot-h{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:0.688rem;
+    font-weight:400;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin:0 0 0.9rem;
+    line-height:1.4;
+  }
+  .foot-col p{ margin:0 0 0.9rem; max-width:none; }
+  .foot-col p:last-child{ margin-bottom:0; }
+  footer a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  footer a:hover{ border-color:var(--accent-dim); }
+  .foot-note{
+    border-top:1px solid var(--line-soft);
+    padding-top:1.4rem;
+    color:var(--faint);
+    max-width:76ch;
+  }
 
   /* ── Раскрывающиеся блоки подходов ───────────────────────────── */
   .acc{
@@ -518,7 +568,8 @@
   .docs{ display:flex; flex-wrap:wrap; gap:16px; }
   .doc{
     display:block;
-    width:min(380px,100%);
+    flex:1 1 240px;
+    min-width:0;
     padding:14px 14px 0;
     margin:0;
     border:1px solid var(--line);
@@ -594,9 +645,6 @@
           <h1>Екатерина Лабутова</h1>
           <p class="role">Работаю с внутренним конфликтом,<br>самокритикой, тревогой и травмой</p>
         </div>
-
-        <p class="lead muted">Если внутри вас две части тянут в разные стороны, мы не будем
-          выбирать, какая из них права. Мы выслушаем каждую и дадим ей место.</p>
 
         <div class="actions">
           <a class="btn" href="#contacts">Записаться</a>
@@ -722,18 +770,19 @@
     <div class="wrap">
       <p class="rail">Сессии</p>
       <div class="body">
-        <h2>Что вас ждёт на сессиях</h2>
+        <h2>Что я гарантирую</h2>
         <ul class="topics">
-          <li><span>Темп работы задаёте вы: я не тороплю и не давлю, потому что глубина
-            появляется там, где достаточно безопасно</span></li>
-          <li><span>Я работаю с человеком, а не с диагнозом, и если увижу, что вам нужен
-            смежный специалист, скажу об этом прямо</span></li>
-          <li><span>Говорить можно всё, в том числе о том, что не нравится в работе
-            или во мне: такие разговоры часто продвигают терапию сильнее всего</span></li>
-          <li><span>Ваши взгляды и образ жизни могут быть любыми: оценивать вас здесь
-            не будут</span></li>
-          <li><span>Конфиденциальность абсолютна: содержание сессий не обсуждается
-            ни с кем, а на супервизию случаи выносятся без имён и узнаваемых деталей</span></li>
+          <li><span>Мы идём с той скоростью, с которой вам безопасно. Форсировать глубину
+            я не буду: так это не работает</span></li>
+          <li><span>Диагноз для меня рабочая информация, а не главное про вас. Если увижу,
+            что нужна помощь врача, скажу прямо и помогу с направлением</span></li>
+          <li><span>На сессии нет запретных тем. Злость на терапию или на меня тоже
+            материал для работы, и часто самый полезный</span></li>
+          <li><span>Ваши убеждения и образ жизни останутся вашими: у меня нет задачи
+            их исправлять</span></li>
+          <li><span>Всё сказанное на сессии остаётся между нами. Единственное исключение
+            это супервизия, и туда случай уходит без имени и деталей, по которым вас
+            можно узнать</span></li>
         </ul>
       </div>
     </div>
@@ -756,6 +805,8 @@
               вам не придётся погружать меня в технические детали и тратить сессии
               на объяснение контекста, мы сразу начнём с того, что болит.</p>
 
+            <p class="small muted"><a href="https://www.linkedin.com/in/ekaterina-labutova/" target="_blank" rel="noopener">Подробнее здесь</a></p>
+
             <p>А в психологию меня привёл сам метод: я увидела, как именно работает IFS,
               и в 2025 году пошла переучиваться на клинического психолога, чтобы
               заниматься им профессионально.</p>
@@ -773,22 +824,23 @@
             <dl>
               <div class="row">
                 <dt>2026</dt>
-                <dd>Московский институт психоанализа
+                <dd><a href="https://inpsycho.ru/" target="_blank" rel="noopener">Московский институт психоанализа</a>
                   <span class="sub">Профессиональная переподготовка «Клиническая психология», 1 500 часов. Квалификация: клинический психолог</span></dd>
               </div>
               <div class="row">
                 <dt>2026</dt>
                 <dd>ACT: терапия принятия и ответственности
-                  <span class="sub">52 часа, программа Никиты Чернова, Международный институт развития КПТ</span></dd>
+                  <span class="sub">52 часа, программа Никиты Чернова,
+                    <a href="https://promo.cbt.university/act" target="_blank" rel="noopener">Международный институт развития КПТ</a></span></dd>
               </div>
               <div class="row">
                 <dt>2026</dt>
-                <dd>IFS Russia: вводный базовый семинар по методу IFS
+                <dd><a href="https://ifs-russia.ru/events/intro_26-09-06_10-04" target="_blank" rel="noopener">IFS Russia: вводный базовый семинар по методу IFS</a>
                   <span class="sub">Двухдневный курс INTRO, Мария Москова и Ольга Младова</span></dd>
               </div>
               <div class="row">
                 <dt>2026</dt>
-                <dd>IFS Russia: углублённый тематический семинар
+                <dd><a href="https://ifs-russia.ru/events/uts_deti_26-09-05" target="_blank" rel="noopener">IFS Russia: углублённый тематический семинар</a>
                   <span class="sub">«Рождение и развитие внутренней системы: онтогенез частей
                     и работа с детьми в IFS»</span></dd>
               </div>
@@ -837,6 +889,13 @@
                   width="1356" height="956" loading="lazy">
                 <span>МИП · «Клиническая психология» · 1 500 ч.</span>
               </button>
+
+              <button class="doc" type="button">
+                <img src="docs/cert-act.jpg"
+                  alt="Удостоверение о повышении квалификации, программа «Терапия принятия и ответственности (ACT)», 52 часа"
+                  width="1400" height="810" loading="lazy">
+                <span>Институт развития КПТ · ACT · 52 ч.</span>
+              </button>
             </div>
           </div>
 
@@ -870,8 +929,9 @@
       <p class="rail">Запись</p>
       <div class="body">
         <h2>Как записаться</h2>
-        <p>Напишите мне в Telegram пару предложений о том, с чем хотите поработать,
-          и мы договоримся о времени.</p>
+        <p>Напишите мне в Telegram, с чем хотите поработать: двух-трёх предложений
+          достаточно, и мы договоримся о времени. Если удобнее без переписки,
+          просто выберите свободный слот в календаре.</p>
 
         <ul class="contacts">
           <li><span class="label">Telegram</span>
@@ -881,7 +941,8 @@
         </ul>
 
         <div class="actions">
-          <a class="btn" href="https://t.me/katelabu">Написать в Telegram</a>
+          <a class="btn" href="https://t.me/katelabu">Написать в Telegram</a>
+          <a class="btn btn-ghost" href="https://calendar.app.google/Eymppk9rGoSdunWh7" target="_blank" rel="noopener">Выбрать время в календаре</a>
         </div>
       </div>
     </div>
@@ -891,19 +952,38 @@
 
 <footer>
   <div class="wrap">
-    <p>Информация на сайте носит справочный характер и не образует публичной оферты.
-      Психологическое консультирование не заменяет медицинскую помощь и не лечит
-      психические расстройства.</p>
-    <p>Если вам прямо сейчас тяжело и есть мысли о том, чтобы причинить себе вред,
-      пожалуйста, обратитесь в неотложную помощь или на круглосуточную линию
-      психологической поддержки: в России 8-800-333-44-34,
-      в Португалии 808 24 24 24 (SNS 24).</p>
-    <p>Ekaterina Labutova · trabalhadora independente (Португалия) · NIF 319642046 ·
-      <a href="mailto:ekaterina.labutova@gmail.com">ekaterina.labutova@gmail.com</a></p>
-    <p>Электронная книга жалоб:
-      <a href="https://www.livroreclamacoes.pt/">livroreclamacoes.pt</a></p>
-    <p>Альтернативное разрешение потребительских споров (RAL) для потребителей
-      из ЕС: CNIACC, <a href="https://www.cniacc.pt/">cniacc.pt</a></p>
+    <div class="foot-cols">
+
+      <div class="foot-col">
+        <h3 class="foot-h">Реквизиты</h3>
+        <p>Ekaterina Labutova<br>
+          Trabalhadora independente, Португалия<br>
+          NIF 319642046<br>
+          <a href="mailto:ekaterina.labutova@gmail.com">ekaterina.labutova@gmail.com</a></p>
+        <p><a href="terms.html">Условия работы</a><br>
+          <a href="privacy.html">Политика конфиденциальности</a><br>
+          <a href="https://www.livroreclamacoes.pt/">Электронная книга жалоб</a><br>
+          <a href="https://www.cniacc.pt/">Разрешение споров (RAL): CNIACC</a></p>
+      </div>
+
+      <div class="foot-col">
+        <h3 class="foot-h">Если тяжело прямо сейчас</h3>
+        <p>Круглосуточные бесплатные линии психологической поддержки:</p>
+        <p>Россия: 8-800-333-44-34<br>
+          Португалия: 808 24 24 24 (SNS 24)</p>
+      </div>
+
+      <div class="foot-col">
+        <h3 class="foot-h">Профили</h3>
+        <p><a href="https://t.me/katelabu">Telegram</a><br>
+          <a href="https://www.linkedin.com/in/ekaterina-labutova/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+
+    </div>
+
+    <p class="foot-note">Информация на сайте носит справочный характер и не образует
+      публичной оферты. Психологическое консультирование не заменяет медицинскую помощь
+      и не лечит психические расстройства.</p>
   </div>
 </footer>
 
