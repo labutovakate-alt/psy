@@ -581,16 +581,34 @@
     gap:16px;
     overflow-x:auto;
     padding-bottom:10px;
-    scroll-snap-type:x proximity;
+    scroll-snap-type:x mandatory;
     scrollbar-width:thin;
     scrollbar-color:var(--line) transparent;
   }
   .docs::-webkit-scrollbar{ height:8px; }
   .docs::-webkit-scrollbar-thumb{ background:var(--line); border-radius:4px; }
   .docs::-webkit-scrollbar-track{ background:transparent; }
+  .docs-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:1rem;
+  }
+  .docs-nav{ display:flex; gap:8px; }
+  .docs-nav button{
+    width:40px;
+    height:32px;
+    border:1px solid var(--line);
+    background:var(--ground-2);
+    color:var(--text);
+    font-size:1.05rem;
+    line-height:1;
+    cursor:pointer;
+  }
+  .docs-nav button:hover{ color:var(--accent); border-color:var(--accent-dim); }
   .doc{
     display:block;
-    flex:0 0 min(300px,80vw);
+    flex:0 0 calc((100% - 32px)/3);
     scroll-snap-align:start;
     padding:14px 14px 0;
     margin:0;
@@ -618,6 +636,12 @@
     color:var(--faint);
     line-height:1.7;
     padding:0.75rem 0.1rem 0.85rem;
+  }
+  @media (max-width:900px){
+    .doc{ flex-basis:calc((100% - 16px)/2); }
+  }
+  @media (max-width:560px){
+    .doc{ flex-basis:100%; }
   }
 
   .lightbox{
@@ -940,8 +964,14 @@
           </div>
 
           <div class="ledger-group">
-            <h3>Документы</h3>
-            <div class="docs">
+            <div class="docs-head">
+              <h3>Документы</h3>
+              <div class="docs-nav">
+                <button type="button" id="docs-prev" aria-label="Назад">&#8249;</button>
+                <button type="button" id="docs-next" aria-label="Вперёд">&#8250;</button>
+              </div>
+            </div>
+            <div class="docs" id="docs-strip">
               <button class="doc" type="button">
                 <img src="docs/diploma-mip.jpg?v=2"
                   alt="Диплом о профессиональной переподготовке, Московский институт психоанализа, клиническая психология"
@@ -966,25 +996,6 @@
           </div>
 
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Стоимость ────────────────────────────────────────────── -->
-  <section class="section" id="price">
-    <div class="wrap">
-      <p class="rail">Стоимость</p>
-      <div class="body">
-        <h2>Сколько это стоит</h2>
-        <div class="price">
-          <div class="price-row">
-            <span class="what">Индивидуальная сессия
-              <span class="sub">60 минут, онлайн</span></span>
-            <span class="amount">50&nbsp;€ · 5&nbsp;000&nbsp;₽</span>
-          </div>
-        </div>
-        <p class="muted small">Оплата в евро на Revolut или в рублях.
-          Отмена без оплаты возможна не позднее чем за 24 часа до сессии.</p>
       </div>
     </div>
   </section>
@@ -1096,6 +1107,22 @@
       if (e.key === 'ArrowLeft') show(idx - 1);
       if (e.key === 'ArrowRight') show(idx + 1);
     });
+    var strip = document.getElementById('docs-strip');
+    var prevBtn = document.getElementById('docs-prev');
+    var nextBtn = document.getElementById('docs-next');
+    function page(dir){
+      strip.scrollBy({ left: dir * strip.clientWidth, behavior: 'smooth' });
+    }
+    prevBtn.addEventListener('click', function(){ page(-1); });
+    nextBtn.addEventListener('click', function(){ page(1); });
+    function syncNav(){
+      var scrollable = strip.scrollWidth > strip.clientWidth + 4;
+      prevBtn.style.display = scrollable ? '' : 'none';
+      nextBtn.style.display = scrollable ? '' : 'none';
+    }
+    syncNav();
+    window.addEventListener('resize', syncNav);
+
     if (docs.length < 2){
       lb.querySelector('.lb-prev').style.display = 'none';
       lb.querySelector('.lb-next').style.display = 'none';
